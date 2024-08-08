@@ -1,12 +1,25 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using BloggyBlog.Models;
+using BloggyBlog.ViewModels;
 
 namespace BloggyBlog.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+
+    private readonly List<Article> _articles = new()
+    {
+        new()
+        {
+            Id = 1,
+            Blogger = "Name blogger",
+            Content = "Content",
+            PublishedDate = DateTime.Now,
+            Title = "Title"
+        }
+    };
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -15,7 +28,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        ArticleViewData vm = new ArticleViewData();
+        vm.Articles = _articles;
+        return View(vm);
     }
 
     public IActionResult Privacy()
