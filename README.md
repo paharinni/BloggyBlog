@@ -1,5 +1,5 @@
 # BloggyBlog
-ASP.NET Core Web App
+ASP.NET Core Web API
 
 This is a Personal Blogging Platform API. 
 
